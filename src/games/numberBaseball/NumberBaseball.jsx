@@ -22,11 +22,15 @@ export default function NumberBaseball() {
   useEffect(() => {
     console.log('answer', answer);
     console.log('tries', tries);
-  })
+  }, [tries])
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    if(value === answer.join('')) {
+    if(value.length !== 4) {
+      return alert('4자리 숫자를 입력해주세요.');
+    }
+
+    if(value === answer.join('')) { // 정답
       setTries((prevTries) => {
         return [...prevTries, {try: value, result: '홈런!'}]
       })

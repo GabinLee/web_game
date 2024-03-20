@@ -22,9 +22,9 @@ export default function ResponseCheck() {
         }, Math.floor(Math.random() * 1000) + 2000);
       })
     } else if(state === 'ready'){ // 성급하게 클릭
-      clearTimeout(timeout.current)
-      setState('waiting')
-      setMessage('너무 성급하시군요! 초록색이 된 후에 클릭하세요')
+      clearTimeout(timeout.current);
+      setState('waiting');
+      setMessage('너무 성급하시군요! 초록색이 된 후에 클릭하세요');
     } else if(state === 'now'){ // 반응속도 체크
       endTime.current = new Date();
       setState('waiting');
@@ -59,13 +59,6 @@ export default function ResponseCheck() {
       </div>
 
       {renderAverage()}
-
-      {/* {result.length !== 0 && (
-        <div>
-          <p>평균시간: {result.reduce((a, c) => a + c) / result.length}ms</p>
-          <button onClick={onReset}>리셋</button>
-        </div>
-      )} */}
     </ResponseCheckDiv>
   )
 }

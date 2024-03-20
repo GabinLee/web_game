@@ -16,22 +16,20 @@ function getWinNumbers() {
 
 
 export default function LottoHooks() {
-  const [winBalls, setWinBalls] = useState([]);
+  const [winBalls, setWinBalls] = useState([]); // 당첨 숫자 6개
   const lottoNumbers = useMemo(() => getWinNumbers(), [])
-  const [winNumbers, setWinNumbers] = useState(lottoNumbers);
-  const [bonus, setBonus] = useState(null);
+  const [winNumbers, setWinNumbers] = useState(lottoNumbers); // 뽑은 7개의 숫자
+  const [bonus, setBonus] = useState(null); // 보너스 숫자 1개
   const [redo, setRedo] = useState(false);
   const timeouts = useRef([]);
 
   useEffect(() => {
-    console.log('useEffect');
     for(let i = 0; i < winNumbers.length - 1; i++) {
       timeouts.current[i] = setTimeout(() => {
         setWinBalls((prevBalls) => [...prevBalls, winNumbers[i]])
       }, (i + 1) * 1000)
     }
     timeouts.current[6] = setTimeout(() => {
-      console.log('aa')
       setBonus(winNumbers[6]);
       setRedo(true);
     }, 7000);
@@ -41,14 +39,10 @@ export default function LottoHooks() {
         clearTimeout(v);
       })
     };
-  }, [timeouts.current])
-
-  // useEffect(() => {
-
-  // }, [])
+  }, [timeouts.current]);
 
   const onClickRedo = useCallback(() => {
-    console.log('onClickRedo');
+    // console.log('onClickRedo');
     setWinNumbers(getWinNumbers());
     setWinBalls([]);
     setBonus(null);

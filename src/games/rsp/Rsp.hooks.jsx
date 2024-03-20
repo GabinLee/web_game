@@ -39,14 +39,6 @@ const RspHooks = () => {
   const [score, setScore] = useState(0);
   const [imgCoord, setImgCoord] = useState(rspCoords.바위);
   const [isRunning, setIsRunning] = useState(true);
-  // const interval = useRef();
-
-  // useEffect(() => {
-  //   interval.current = setInterval(changeHand, 100);
-  //   return () => {
-  //     clearInterval(interval.current)
-  //   }
-  // }, [imgCoord])
 
   const changeHand = () => {
     if(imgCoord === rspCoords.바위){
@@ -78,7 +70,6 @@ const RspHooks = () => {
       
       setTimeout(() => {
         setIsRunning(true);
-        // interval.current = setInterval(changeHand, 100)
       }, 10000)
     }
   }

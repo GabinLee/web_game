@@ -32,7 +32,11 @@ export default function Gugudan() {
     <GugudanDiv>
       <p>{first} 곱하기 {second}는?</p>
       <form onSubmit={onSubmitForm}>
-        <input type="number" ref={inputRef} onChange={onChangeInput} value={value} />
+        <input type="number"
+          ref={inputRef}
+          onChange={onChangeInput}
+          value={value}
+        />
         <button>입력!</button>
       </form>
       <p id="result">{result}</p>
